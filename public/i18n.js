@@ -74,6 +74,10 @@ function setLanguage(language) {
   const titleKey = document.body.dataset.titleKey;
   if (titleKey) document.title = strings[titleKey];
   document.querySelectorAll("[data-language]").forEach((button) => {
+    const isJapanese = button.dataset.language === "ja";
+    button.textContent = isJapanese ? "JP" : "EN";
+    button.setAttribute("aria-label", isJapanese ? "日本語" : "English");
+    button.title = isJapanese ? "日本語" : "English";
     button.setAttribute("aria-pressed", String(button.dataset.language === lang));
   });
 }
